@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.chess254.archcomp.Models.User;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        RecyclerView recyclerView = findViewById(R.id.recyclerview_user);
         final UserListAdapter adapter = new UserListAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -77,6 +78,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, NewUserActivity.class);
                 startActivityForResult(intent, NEW_USER_ACTIVITY_REQUEST_CODE);
 //                startActivity(intent);
+            }
+        });
+
+        FloatingActionButton houseButton = findViewById(R.id.button_houses);
+        houseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, HouseActivity.class);
+                startActivity(intent);
             }
         });
     }

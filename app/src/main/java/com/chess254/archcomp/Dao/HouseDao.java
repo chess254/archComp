@@ -1,6 +1,7 @@
 package com.chess254.archcomp.Dao;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
@@ -12,7 +13,7 @@ import java.util.List;
 /**
  * Created by chess on 10/24/2018.
  */
-
+@Dao
 public interface HouseDao {
 
     @Insert

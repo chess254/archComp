@@ -77,6 +77,30 @@ public abstract class ArchCompRoomDatabase extends RoomDatabase {
 //            mDao.insert(word);
 //            word = new Word("Worl");
 //            mDao.insert(word);
+
+            //populate house
+            houseDao.deleteAll();
+            House house = new House(1, "mansion","2,500,000", "200 m2", "4 rooms",
+                    "Kapsoya Eldoret", "A very well maintained house with space" +
+                    "A very well maintained house with spaceA very well maintained house with space",
+                    "available","nice " + "pic", 1, "5 Star", 5);
+            House house2 = new House(2, "mansion","2,500,000", "300 metres2", "4 rooms",
+                    "milimani webuye", "A very well maintained house with space" +
+                    "A very well maintained house with spaceA very well maintained house with space",
+                    "available","nice " + "pic", 1, "5 Star", 5);
+            House house3 = new House(3, "mansion","2,500,000", "20000 m2", "4 rooms",
+                    "upperhill nairobi", "A very well maintained house with space" +
+                    "A very well maintained house with spaceA very well maintained house with space",
+                    "available","nice " + "pic", 1, "5 Star", 5);
+            House house4 = new House(4, "mansion","2,500,000", "200 m2", "4 rooms",
+                    "Kapsoya Eldoret", "A very well maintained house with space" +
+                    "A very well maintained house with spaceA very well maintained house with space",
+                    "available","nice " + "pic", 1, "5 Star", 5);
+            House house5 = new House(5, "mansion","2,500,000", "200 m2", "4 rooms",
+                    "Kapsoya Eldoret", "A very well maintained house with space" +
+                    "A very well maintained house with spaceA very well maintained house with space",
+                    "available","nice " + "pic", 1, "5 Star", 5);
+            houseDao.insert(house,house2, house3, house4, house5);
             return null;
         }
     }
