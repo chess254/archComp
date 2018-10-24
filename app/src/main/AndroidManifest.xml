@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".NewWordActivity"></activity>
+        <activity android:name=".NewUserActivity"></activity>
+
     </application>
 
 </manifest>

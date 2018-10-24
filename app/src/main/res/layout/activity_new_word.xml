@@ -4,6 +4,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <EditText
         android:id="@+id/edit_word"
         android:layout_width="match_parent"
@@ -16,8 +17,10 @@
         android:layout_marginTop="@dimen/big_padding"
         android:textSize="18sp" />
 
+
+
     <Button
-        android:id="@+id/button_save"
+        android:id="@+id/button_save_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"

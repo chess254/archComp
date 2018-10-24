@@ -15,22 +15,34 @@ import android.widget.EditText;
 public class NewWordActivity extends AppCompatActivity {
     public static final String EXTRA_REPLY = "com.example.android.wordlistsql.REPLY";
 
-    private EditText mEditWordView;
+    private EditText editName;
+    private EditText editImage;
+    private EditText editEmail;
+    private EditText editPhone;
+    private EditText editAddress;
+
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_word);
-        mEditWordView = findViewById(R.id.edit_word);
+        editName = findViewById(R.id.edit_name);
+        editImage = findViewById(R.id.edit_image);
+        editEmail = findViewById(R.id.edit_email);
+        editPhone = findViewById(R.id.edit_phone);
+        editAddress = findViewById(R.id.edit_address);
 
-        final Button button = findViewById(R.id.button_save);
+        final Button button = findViewById(R.id.button_save_word);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent replyIntent = new Intent();
-                if (TextUtils.isEmpty(mEditWordView.getText())) {
+                if (TextUtils.isEmpty(editName.getText())) {
                     setResult(RESULT_CANCELED, replyIntent);
                 } else {
-                    String word = mEditWordView.getText().toString();
+                    String word = editName.getText().toString();
                     replyIntent.putExtra(EXTRA_REPLY, word);
                     setResult(RESULT_OK, replyIntent);
                 }
