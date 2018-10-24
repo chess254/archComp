@@ -8,19 +8,22 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
+import com.chess254.archcomp.Dao.HouseDao;
 import com.chess254.archcomp.Dao.UserDao;
+import com.chess254.archcomp.Models.House;
 import com.chess254.archcomp.Models.User;
 
 /**
  * Created by chess on 10/23/2018.
  */
 
-@Database(entities = {Word.class, User.class}, version = 1)
+@Database(entities = {Word.class, User.class, House.class}, version = 1)
 public abstract class ArchCompRoomDatabase extends RoomDatabase {
 
     //DAOs that work with the database
     public abstract WordDao wordDao();
     public abstract UserDao userDao();
+    public abstract HouseDao houseDao();
 
     //make the archCompRoon\database a singleton to prevent multiple instances
     private  static  volatile ArchCompRoomDatabase INSTANCE;
@@ -58,11 +61,13 @@ public abstract class ArchCompRoomDatabase extends RoomDatabase {
 
         private final WordDao mDao;
         private final UserDao userDao;
+        private final HouseDao houseDao;
 
 
         PopulateDbAsync(ArchCompRoomDatabase db) {
             mDao = db.wordDao();
             userDao = db.userDao();
+            houseDao = db.houseDao();
         }
 
         @Override

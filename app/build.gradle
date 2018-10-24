@@ -36,5 +36,7 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$rootProject.archCompVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archCompVersion"
 
-    implementation 'com.android.support:support-annotations:27.1.1'
+    implementation 'com.android.support:support-annotations:28.0.0'
+
+    implementation 'com.android.support:cardview-v7:26.1.0'
 }

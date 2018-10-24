@@ -54,7 +54,7 @@ public class NewUserActivity extends AppCompatActivity {
 //                } else {
 
 
-//                    user = new User(1,editName.getText().toString(),editPhone.getText().toString(), editEmail.getText().toString(), editAddress.getText().toString(), editImage.getText().toString());
+//                    user = new House(1,editName.getText().toString(),editPhone.getText().toString(), editEmail.getText().toString(), editAddress.getText().toString(), editImage.getText().toString());
 
                 String name = editName.getText().toString();
                String image = editImage.getText().toString();
