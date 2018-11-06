@@ -23,6 +23,7 @@ public class ArchCompRepository {
     private LiveData<List<User>> allUsers;
     private LiveData<List<Word>> allWords;
     private LiveData<List<House>> allHouses;
+    private LiveData<House> getHouse;
 
     //constructor that gets a handle to the database and initializes member variables
     ArchCompRepository(Application application) {
@@ -33,6 +34,7 @@ public class ArchCompRepository {
         allWords = wordDao.getAllWords();
         allUsers = userDao.getAllUsers();
         allHouses = houseDao.getAllHouses();
+//        getHouse = houseDao.findById("id");
 
     }
 
@@ -46,6 +48,10 @@ public class ArchCompRepository {
 
     LiveData<List<House>> getAllHouses() {
         return allHouses;
+    }
+
+    LiveData<House> getHouse(){
+        return getHouse;
     }
 
 

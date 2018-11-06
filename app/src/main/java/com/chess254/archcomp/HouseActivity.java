@@ -1,7 +1,10 @@
 package com.chess254.archcomp;
 
+import android.app.Application;
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -11,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.chess254.archcomp.Dao.HouseDao;
 import com.chess254.archcomp.Models.House;
 
 import java.util.List;
@@ -26,6 +30,10 @@ public class HouseActivity extends AppCompatActivity {
     private HouseViewModel mHouseViewModel;
 
 
+
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +44,29 @@ public class HouseActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-//        Toolbar toolbar = findViewById(R.id.toolbar_house);
-//        setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar_house);
+        setSupportActionBar(toolbar);
+
+
+        //recyclerview click listener
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onLongClick(View child, int childPosition) {
+
+            }
+
+            @Override
+            public void onClick(View child, int childPosition) {
+
+
+//                Intent intent = new Intent(HouseActivity.this, HouseDetailActivity.class);
+//                startActivity(intent);
+
+                createIntent(childPosition);
+
+            }
+        }));
+
 
         //get a ViewModel from the ViewModelProvider.
         mHouseViewModel = ViewModelProviders.of(this).get(HouseViewModel.class);
@@ -57,5 +86,14 @@ public class HouseActivity extends AppCompatActivity {
             }
         });
 
+
+
+    }
+
+    public void createIntent(int childPosition)
+    {
+        Intent intent = new Intent(HouseActivity.this, HouseDetailActivity.class);
+//        intent.putExtra("appartement", house.get(childPosition));
+        startActivity(intent);
     }
 }

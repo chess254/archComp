@@ -43,6 +43,22 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+//
+        //added recyclerview touch listener to wrong recyclerview
+//        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new RecyclerTouchListener.ClickListener() {
+//            @Override
+//            public void onLongClick(View child, int childPosition) {
+//
+//            }
+//
+//            @Override
+//            public void onClick(View child, int childPosition) {
+//
+//                Intent intent = new Intent(MainActivity.this, HouseDetailActivity.class);
+//                startActivity(intent);
+//
+//            }
+//        }));
 
 
         //ViewModelProviders to associate your ViewModel with your UI controller.

@@ -24,4 +24,7 @@ public interface HouseDao {
     @Query("DELETE FROM house_table")
     void deleteAll();
 
+//    @Query("SELECT * FROM house_table WHERE id=:id")
+//    LiveData<House> findById(String id);
+
 }
