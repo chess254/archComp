@@ -93,8 +93,6 @@ public class HouseActivity extends AppCompatActivity {
 
     public void createIntent(int childPosition)
     {
-        mHouseViewModel = ViewModelProviders.of(this).get(HouseViewModel.class);
-
         LiveData<List<House>> houses = mHouseViewModel.getAllHouses();
         House Sample =  houses.getValue().get(childPosition);
         Intent intent = new Intent(HouseActivity.this, HouseDetailActivity.class);

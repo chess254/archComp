@@ -192,7 +192,8 @@ public class HouseDetailActivity extends FragmentActivity
         float noteFinale;
 
 //        ratingBar.setRating(Float.parseFloat(house.getRatingHouse()));
-        titre.setText(house.getTypeHouse() + " " + house.getTypeHouse() + " à louer.");
+        prix.setText(house.getPriceHouse());
+        titre.setText(house.getTypeHouse() + " " + " to rent.");
         adresse.setText(house.getLocationHouse());
         nb_chambres.setText(house.getRoomsHouse());
         surface.setText(house.getAreaHouse());
