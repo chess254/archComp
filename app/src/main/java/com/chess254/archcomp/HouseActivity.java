@@ -6,6 +6,7 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -92,8 +93,13 @@ public class HouseActivity extends AppCompatActivity {
 
     public void createIntent(int childPosition)
     {
+        mHouseViewModel = ViewModelProviders.of(this).get(HouseViewModel.class);
+
+        LiveData<List<House>> houses = mHouseViewModel.getAllHouses();
+        House Sample =  houses.getValue().get(childPosition);
         Intent intent = new Intent(HouseActivity.this, HouseDetailActivity.class);
-//        intent.putExtra("appartement", house.get(childPosition));
+//        intent.putExtra("house", (Parcelable) houses.getValue().get(childPosition));
+        intent.putExtra("house", Sample);
         startActivity(intent);
     }
 }

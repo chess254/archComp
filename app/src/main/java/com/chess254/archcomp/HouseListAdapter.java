@@ -20,13 +20,22 @@ public class HouseListAdapter extends RecyclerView.Adapter <HouseListAdapter.Hou
 
     private final LayoutInflater mInflater;
     private List<House> mHouses;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
 
     HouseListAdapter(Context context){
         mInflater = LayoutInflater.from(context);
     }
 
 
-    class HouseViewHolder extends RecyclerView.ViewHolder{
+    public class HouseViewHolder extends RecyclerView.ViewHolder{
 
         private TextView textViewArea;
         private TextView textViewAddreaa;
@@ -38,6 +47,18 @@ public class HouseListAdapter extends RecyclerView.Adapter <HouseListAdapter.Hou
             textViewArea = itemView.findViewById(R.id.area_house);
             textViewAddreaa = itemView.findViewById(R.id.location_house);
             imageViewHouse = itemView.findViewById(R.id.image_house);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            mListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
     @Override

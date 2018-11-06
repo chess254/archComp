@@ -93,6 +93,7 @@ public class HouseDetailActivity extends FragmentActivity
 
 
         Intent intent = getIntent();
+        House house = intent.getParcelableExtra("house");
 
 
         /*recyclerView = (RecyclerView) findViewById(R.id.recyclerViewPhotos);
@@ -191,11 +192,11 @@ public class HouseDetailActivity extends FragmentActivity
         float noteFinale;
 
 //        ratingBar.setRating(Float.parseFloat(house.getRatingHouse()));
-//        titre.setText(house.getTypeHouse() + " " + house.getTypeHouse() + " à louer.");
-//        adresse.setText(house.getLocationHouse());
-//        nb_chambres.setText(house.getRoomsHouse());
-//        surface.setText(house.getAreaHouse());
-//        detail.setText(house.getDescriptionHouse());
+        titre.setText(house.getTypeHouse() + " " + house.getTypeHouse() + " à louer.");
+        adresse.setText(house.getLocationHouse());
+        nb_chambres.setText(house.getRoomsHouse());
+        surface.setText(house.getAreaHouse());
+        detail.setText(house.getDescriptionHouse());
 
 //        String str = house.getJoursVisiteLogement().get(0).getJourDispo() + " : " + house.getJoursVisiteLogement().get(0).getHeureDebutDispo() + " - " + house.getJoursVisiteLogement().get(0).getHeureFinDispo();
 //        for (int i = 1; i < house.getJoursVisiteLogement().size(); i++) {
