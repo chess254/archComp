@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".NewUserActivity"></activity>
+        <activity android:name=".NewHouseActivity"></activity>
+
         <activity android:name=".HouseDetailActivity"></activity>
         <activity
             android:name=".HouseActivity"

@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(
                     getApplicationContext(),
-                    R.string.empty_not_saved,
+                    "User not saved, fill all fields",
                     Toast.LENGTH_LONG).show();
         }
     }

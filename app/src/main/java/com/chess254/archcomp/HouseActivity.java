@@ -14,9 +14,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.chess254.archcomp.Dao.HouseDao;
 import com.chess254.archcomp.Models.House;
+import com.chess254.archcomp.Models.User;
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ import java.util.List;
 
 public class HouseActivity extends AppCompatActivity {
 
-    private static final int NEW_USER_ACTIVITY_REQUEST_CODE = 2 ;
+    private static final int NEW_HOUSE_ACTIVITY_REQUEST_CODE = 3 ;
 
     private HouseViewModel mHouseViewModel;
 
@@ -59,11 +61,17 @@ public class HouseActivity extends AppCompatActivity {
             @Override
             public void onClick(View child, int childPosition) {
 
+                LiveData<List<House>> houses = mHouseViewModel.getAllHouses();
+                House clickedHouse =  houses.getValue().get(childPosition);
+                Intent intent = new Intent(HouseActivity.this, HouseDetailActivity.class);
+//        intent.putExtra("house", (Parcelable) houses.getValue().get(childPosition));
+                intent.putExtra("house", clickedHouse);
+                startActivity(intent);
 
 //                Intent intent = new Intent(HouseActivity.this, HouseDetailActivity.class);
 //                startActivity(intent);
 
-                createIntent(childPosition);
+//                createIntent(childPosition);
 
             }
         }));
@@ -84,6 +92,9 @@ public class HouseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(HouseActivity.this, NewHouseActivity.class);
+                startActivityForResult(intent, NEW_HOUSE_ACTIVITY_REQUEST_CODE);
+
             }
         });
 
@@ -91,13 +102,45 @@ public class HouseActivity extends AppCompatActivity {
 
     }
 
-    public void createIntent(int childPosition)
-    {
-        LiveData<List<House>> houses = mHouseViewModel.getAllHouses();
-        House Sample =  houses.getValue().get(childPosition);
-        Intent intent = new Intent(HouseActivity.this, HouseDetailActivity.class);
-//        intent.putExtra("house", (Parcelable) houses.getValue().get(childPosition));
-        intent.putExtra("house", Sample);
-        startActivity(intent);
+//    public void createIntent(int childPosition)
+//    {
+//        LiveData<List<House>> houses = mHouseViewModel.getAllHouses();
+//        House clickedHouse =  houses.getValue().get(childPosition);
+//        Intent intent = new Intent(HouseActivity.this, HouseDetailActivity.class);
+////        intent.putExtra("house", (Parcelable) houses.getValue().get(childPosition));
+//        intent.putExtra("house", clickedHouse);
+//        startActivity(intent);
+//    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == NEW_HOUSE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+
+            String type = data.getExtras().getString("type");
+            String location = data.getExtras().getString("location");
+            String rooms = data.getExtras().getString("rooms");
+            String area= data.getExtras().getString("area");
+            String price= data.getExtras().getString("price");
+            String description= data.getExtras().getString("description");
+
+
+//              removed this to let empty constructor autogenerate primary key
+//            House house = new House(21,type, price, area, rooms, location, description,
+//                    "available", "image", 1, "5", 5  );
+            House house = new House();
+            house.setTypeHouse(type);
+            house.setLocationHouse(location);
+            house.setRoomsHouse(rooms);
+            house.setAreaHouse(area);
+            house.setPriceHouse(price);
+            house.setDescriptionHouse(description);
+            mHouseViewModel.insert(house);
+        } else {
+            Toast.makeText(
+                    getApplicationContext(),
+                    "Listing not saved, fill all fields",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }
