@@ -149,7 +149,7 @@ public class HouseActivity extends AppCompatActivity {
 //            house.setAreaHouse(area);
 //            house.setPriceHouse(price);
 //            house.setDescriptionHouse(description);
-//            mHouseViewModel.insert(house);
+//            //mHouseViewModel.insert(house);
         } else {
             Toast.makeText(
                     getApplicationContext(),
