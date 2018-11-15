@@ -73,7 +73,10 @@ public class HouseListAdapter extends RecyclerView.Adapter <HouseListAdapter.Hou
 
         if(mHouses != null) {
             House current = mHouses.get(position);
-            holder.textViewArea.setText(current.getAreaHouse());
+            Integer ownerid = current.getOwnerHouse();
+//            holder.textViewArea.setText(current.getAreaHouse());
+                holder.textViewArea.setText(ownerid.toString());
+
             holder.textViewAddreaa.setText(current.getLocationHouse());
             holder.imageViewHouse.setImageResource(R.mipmap._house);
         } else {

@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -51,6 +52,10 @@ public class HouseActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+
+
+
+
         //recyclerview click listener
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
@@ -86,6 +91,12 @@ public class HouseActivity extends AppCompatActivity {
                 adapter.setmHouses(houses);
             }
         });
+
+        //danger, a test
+//        int id = 1;
+//        LiveData<List<House>> housesByUser = mHouseViewModel.findAllHousesByUser(id);
+//        Log.d("an_id", "logcat");
+//        Log.d("an_id", housesByUser.toString());
 
         FloatingActionButton fab = findViewById(R.id.fabhouse);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -128,14 +139,17 @@ public class HouseActivity extends AppCompatActivity {
 //              removed this to let empty constructor autogenerate primary key
 //            House house = new House(21,type, price, area, rooms, location, description,
 //                    "available", "image", 1, "5", 5  );
-            House house = new House();
-            house.setTypeHouse(type);
-            house.setLocationHouse(location);
-            house.setRoomsHouse(rooms);
-            house.setAreaHouse(area);
-            house.setPriceHouse(price);
-            house.setDescriptionHouse(description);
-            mHouseViewModel.insert(house);
+
+
+//            House house = new House();
+//            house.setTypeHouse(type);
+//            house.setLocationHouse(location);
+//            house.setRoomsHouse(rooms);
+//            house.setOwnerHouse(1);// todo: hardcoded foreign user id it this , check out how to correct asap to get the relations working
+//            house.setAreaHouse(area);
+//            house.setPriceHouse(price);
+//            house.setDescriptionHouse(description);
+//            mHouseViewModel.insert(house);
         } else {
             Toast.makeText(
                     getApplicationContext(),

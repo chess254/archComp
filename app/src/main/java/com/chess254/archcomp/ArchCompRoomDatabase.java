@@ -101,6 +101,29 @@ public abstract class ArchCompRoomDatabase extends RoomDatabase {
 //                    "A very well maintained house with spaceA very well maintained house with space",
 //                    "available","nice " + "pic", 1, "5 Star", 5);
 //            houseDao.insert(house,house2, house3, house4, house5);
+            userDao.deleteAll();
+            User userTest = new User(1,"chess","0721542746","lae2006a@gmail.com","kapsoya eldoret", "my image");
+            User userTest2 = new User(2,"chess2","phone2","lae2006a@gmail.com"," eldoret", "my image");
+
+            userDao.insert(userTest, userTest2);
+            houseDao.deleteAll();
+            House houseTest = new House();
+            houseTest.setId(1);
+            houseTest.setOwnerHouse(1);
+            houseTest.setDescriptionHouse("a very nice house");
+            houseTest.setTypeHouse("bungalow");
+            houseTest.setAreaHouse("200");
+
+            House houseTest2 = new House();
+            houseTest.setId(2);
+            houseTest.setOwnerHouse(2);
+            houseTest.setDescriptionHouse("a very nice house2");
+            houseTest.setTypeHouse("bungalow");
+            houseTest.setAreaHouse("2002");
+
+
+
+            houseDao.insert(houseTest);
             return null;
         }
     }

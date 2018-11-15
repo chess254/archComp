@@ -93,7 +93,7 @@ public class HouseDetailActivity extends FragmentActivity
 
 
         Intent intent = getIntent();
-        House house = intent.getParcelableExtra("house");
+        final House house = intent.getParcelableExtra("house");
 
 
         /*recyclerView = (RecyclerView) findViewById(R.id.recyclerViewPhotos);
@@ -249,38 +249,40 @@ public class HouseDetailActivity extends FragmentActivity
 //        });
 
 
-//        appel.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent callIntent = new Intent(Intent.ACTION_CALL);
-//                callIntent.setData(Uri.parse("tel:"+ house.getProprietaireLogement().getTelUser()));
-//                if (ActivityCompat.checkSelfPermission(DetailActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-//                    return;
-//                }
-//                startActivity(callIntent);
-//
-//            }
-//        });
+        appel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+//                callIntent.setData(Uri.parse("tel:"+ house.getOwnerHouse()));
+                callIntent.setData(Uri.parse("tel:"+"+254721542746"));
+                if (ActivityCompat.checkSelfPermission(HouseDetailActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                startActivity(callIntent);
+
+            }
+        });
 
 
-//        email.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent emailIntent = new Intent(Intent.ACTION_SEND);
-//                emailIntent.setData(Uri.parse("mailto:"));
-//                emailIntent.setType("text/plain");
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.setData(Uri.parse("mailto:"));
+                emailIntent.setType("text/plain");
 //                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{house.getProprietaireLogement().getEmailUser()});
-//                emailIntent.putExtra(Intent.EXTRA_SUBJECT, house.getTitreLogement()+" "+ house.getTypeLogement());
-//
-//                try {
-//                    startActivity(Intent.createChooser(emailIntent, "Envoyer un mail..."));
-//                    finish();
-//                } catch (android.content.ActivityNotFoundException ex) {
-//                    Toast.makeText(DetailActivity.this, "Aucune application Mail installée.", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"lae2006a@gmail.com"});
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Apartment to rent" +" "+ "House listing");
+
+                try {
+                    startActivity(Intent.createChooser(emailIntent, "Send an email..."));
+                    finish();
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(HouseDetailActivity.this, "No email app installed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
 

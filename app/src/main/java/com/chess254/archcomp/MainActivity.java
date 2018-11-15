@@ -84,6 +84,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+//        FloatingActionButton fab = findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent(MainActivity.this, NewUserActivity.class);
+//                startActivityForResult(intent, NEW_USER_ACTIVITY_REQUEST_CODE);
+//            }
+//        });
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,9 +101,9 @@ public class MainActivity extends AppCompatActivity {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
 
-                Intent intent = new Intent(MainActivity.this, NewUserActivity.class);
-                startActivityForResult(intent, NEW_USER_ACTIVITY_REQUEST_CODE);
-//                startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, HouseByUser.class);
+//                startActivityForResult(intent, NEW_USER_ACTIVITY_REQUEST_CODE);
+                startActivity(intent);
             }
         });
 
@@ -139,10 +149,11 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == NEW_USER_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
 
             String name = data.getExtras().getString("name");
-            String phone = data.getExtras().getString("phone");;
+            String phone = data.getExtras().getString("phone");
             String image = data.getExtras().getString("image");
-            String address= data.getExtras().getString("address");;
-            String email= data.getExtras().getString("email");;
+            String address= data.getExtras().getString("address");
+            String email= data.getExtras().getString("email");
+
 
 
 //            image = getIntent().getStringExtra("image");
@@ -150,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
 //            email = getIntent().getStringExtra("email");
 
 
-            User user = new User( name, email, phone, address, image );
+            User user = new User( 1,name, email, phone, address, image );
             mUserViewModel.insert(user);
         } else {
             Toast.makeText(

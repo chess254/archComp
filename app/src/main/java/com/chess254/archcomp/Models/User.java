@@ -2,6 +2,7 @@ package com.chess254.archcomp.Models;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
@@ -12,7 +13,8 @@ import android.support.annotation.NonNull;
 @Entity(tableName = "user_table")
 public class User {
 
-    @PrimaryKey(autoGenerate = true)
+
+    @PrimaryKey
     @NonNull
     @ColumnInfo(name = "user_id")
     private Integer id;
@@ -39,14 +41,14 @@ public class User {
         this.userAddress = userAddress;
         this.userImage = userImage;
     }
-@Ignore
-    public User(String userName, String userPhone, String userEmail, String userAddress, String userImage) {
-        this.userName = userName;
-        this.userPhone = userPhone;
-        this.userEmail = userEmail;
-        this.userAddress = userAddress;
-        this.userImage = userImage;
-    }
+//@Ignore
+//    public User(String userName, String userPhone, String userEmail, String userAddress, String userImage) {
+//        this.userName = userName;
+//        this.userPhone = userPhone;
+//        this.userEmail = userEmail;
+//        this.userAddress = userAddress;
+//        this.userImage = userImage;
+//    }
 
     public Integer getId() {
         return id;

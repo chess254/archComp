@@ -7,6 +7,7 @@ import android.arch.persistence.room.Query;
 
 import com.chess254.archcomp.Models.User;
 import com.chess254.archcomp.Word;
+import com.chess254.archcomp.Models.House;
 
 import java.util.List;
 
@@ -23,5 +24,7 @@ public interface UserDao {
     LiveData<List<User>> getAllUsers();
     @Query("DELETE FROM word_table")
     void deleteAll();
+    @Query ("SELECT * FROM house_table WHERE user_id = :user_id")
+    LiveData<List<House>> houseByUserId(int user_id);
 
 }

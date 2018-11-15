@@ -26,7 +26,7 @@ public class HouseDetailViewModel extends AndroidViewModel {
         super(application);
 
         mRepository = new ArchCompRepository(application);
-        mHouse = mRepository.getHouse();
+//        mHouse = mRepository.getHouse();
     }
     //a "getter" method for all the words. This completely hides the implementation from the UI.
     LiveData<House> getHouse(){
