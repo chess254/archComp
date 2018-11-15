@@ -23,14 +23,22 @@
     <include layout="@layout/content_main" />
 
     <android.support.design.widget.FloatingActionButton
+
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
 
-        android:src="@drawable/ic_add_box_black_24dp"/>
+        android:src="@drawable/ic_add_box_black_24dp" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_houses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_location_city_black_24dp"/>
 
 
 </android.support.design.widget.CoordinatorLayout>

@@ -43,6 +43,6 @@ public class WordViewModel extends AndroidViewModel {
     //a wrapper insert() method that calls the Repository's insert() method.
     // implementation of insert() is completely hidden from the UI.
     public void insert(Word word){
-        mRepository.insert(word);
+        mRepository.insertWord(word);
     }
 }

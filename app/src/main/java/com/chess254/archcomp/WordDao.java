@@ -5,6 +5,8 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
+import com.chess254.archcomp.Models.User;
+
 import java.util.List;
 
 /**
@@ -19,6 +21,6 @@ public interface WordDao {
 
     @Query("SELECT * FROM word_table ORDER BY word ASC")
     LiveData<List<Word>> getAllWords();
-    @Query("DELETE FROM word_table")
+    @Query("DELETE FROM user_table")
     void deleteAll();
 }
