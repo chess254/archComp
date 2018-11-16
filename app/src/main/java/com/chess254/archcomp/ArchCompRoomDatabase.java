@@ -13,6 +13,8 @@ import com.chess254.archcomp.Dao.UserDao;
 import com.chess254.archcomp.Models.House;
 import com.chess254.archcomp.Models.User;
 
+import java.util.UUID;
+
 /**
  * Created by chess on 10/23/2018.
  */
@@ -116,10 +118,40 @@ public abstract class ArchCompRoomDatabase extends RoomDatabase {
 
             House houseTest2 = new House();
             houseTest.setId(2);
+            houseTest.setTypeHouse("Bungalow");
+            houseTest.setLocationHouse("Kapsoya, Eldoret");
+            houseTest.setRoomsHouse("15");
             houseTest.setOwnerHouse(2);
-            houseTest.setDescriptionHouse("a very nice house2");
-            houseTest.setTypeHouse("bungalow");
-            houseTest.setAreaHouse("2002");
+            houseTest.setAreaHouse("300");
+            houseTest.setPriceHouse("30,000");
+            houseTest.setDescriptionHouse("This book is dedicated to all the loyal readers of\n" +
+                    "antonioleiva.com\n" +
+                    ", who made me\n" +
+                    "believe that writing about Android development was a powerful tool to help others\n" +
+                    "learn about it. I felt that this book was a necessary step forward.\n" +
+                    "Special mention goes to\n" +
+                    "Luis Herrero\n" +
+                    ", who designed the excellent cover of this book,\n" +
+                    "and to\n" +
+                    "Gautier Mechling\n" +
+                    "for helping me so much by reviewing this book. It is thanks\n" +
+                    "to him that these pages are not full of typos and mistakes.\n" +
+                    "And,ofcourse,thisisspeciallydedicatedtoyou.Withyoursupportandyourhelp,this\n" +
+                    "book is growing and becoming a reference. So any suggestions to improve the quality\n" +
+                    "ofthisbookwillbewelcomed.Feelfreetowriteanytimeto\n" +
+                    "contact@antonioleiva.com\n" +
+                    ".");
+
+
+            House house = new House();
+//            house.setTypeHouse(type);
+//            house.setLocationHouse(location);
+//            house.setRoomsHouse(rooms);
+//            house.setOwnerHouse(1);// todo: hardcoded foreign user id it this , check out how to correct asap to get the relations working
+//            house.setAreaHouse(area);
+//            house.setPriceHouse(price);
+//            house.setDescriptionHouse(description);
+//            mHouseViewModel.insert(house);
 
 
 

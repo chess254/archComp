@@ -1,25 +1,20 @@
 package com.chess254.archcomp;
 
-import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.chess254.archcomp.Dao.HouseDao;
 import com.chess254.archcomp.Models.House;
-import com.chess254.archcomp.Models.User;
 
 import java.util.List;
 
@@ -29,14 +24,8 @@ import java.util.List;
 
 public class HouseActivity extends AppCompatActivity {
 
-    private static final int NEW_HOUSE_ACTIVITY_REQUEST_CODE = 3 ;
-
+    private static final int NEW_HOUSE_ACTIVITY_REQUEST_CODE = 3;
     private HouseViewModel mHouseViewModel;
-
-
-
-
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,11 +41,6 @@ public class HouseActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-
-
-
-
-        //recyclerview click listener
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onLongClick(View child, int childPosition) {
@@ -67,9 +51,8 @@ public class HouseActivity extends AppCompatActivity {
             public void onClick(View child, int childPosition) {
 
                 LiveData<List<House>> houses = mHouseViewModel.getAllHouses();
-                House clickedHouse =  houses.getValue().get(childPosition);
+                House clickedHouse = houses.getValue().get(childPosition);
                 Intent intent = new Intent(HouseActivity.this, HouseDetailActivity.class);
-//        intent.putExtra("house", (Parcelable) houses.getValue().get(childPosition));
                 intent.putExtra("house", clickedHouse);
                 startActivity(intent);
 
@@ -92,12 +75,6 @@ public class HouseActivity extends AppCompatActivity {
             }
         });
 
-        //danger, a test
-//        int id = 1;
-//        LiveData<List<House>> housesByUser = mHouseViewModel.findAllHousesByUser(id);
-//        Log.d("an_id", "logcat");
-//        Log.d("an_id", housesByUser.toString());
-
         FloatingActionButton fab = findViewById(R.id.fabhouse);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +85,6 @@ public class HouseActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }
@@ -131,9 +107,9 @@ public class HouseActivity extends AppCompatActivity {
             String type = data.getExtras().getString("type");
             String location = data.getExtras().getString("location");
             String rooms = data.getExtras().getString("rooms");
-            String area= data.getExtras().getString("area");
-            String price= data.getExtras().getString("price");
-            String description= data.getExtras().getString("description");
+            String area = data.getExtras().getString("area");
+            String price = data.getExtras().getString("price");
+            String description = data.getExtras().getString("description");
 
 
 //              removed this to let empty constructor autogenerate primary key
@@ -141,15 +117,15 @@ public class HouseActivity extends AppCompatActivity {
 //                    "available", "image", 1, "5", 5  );
 
 
-//            House house = new House();
-//            house.setTypeHouse(type);
-//            house.setLocationHouse(location);
-//            house.setRoomsHouse(rooms);
-//            house.setOwnerHouse(1);// todo: hardcoded foreign user id it this , check out how to correct asap to get the relations working
-//            house.setAreaHouse(area);
-//            house.setPriceHouse(price);
-//            house.setDescriptionHouse(description);
-//            //mHouseViewModel.insert(house);
+            House house = new House();
+            house.setTypeHouse(type);
+            house.setLocationHouse(location);
+            house.setRoomsHouse(rooms);
+            house.setOwnerHouse(1);// todo: hardcoded foreign user id it this , check out how to correct asap to get the relations working
+            house.setAreaHouse(area);
+            house.setPriceHouse(price);
+            house.setDescriptionHouse(description);
+            mHouseViewModel.insert(house);
         } else {
             Toast.makeText(
                     getApplicationContext(),
