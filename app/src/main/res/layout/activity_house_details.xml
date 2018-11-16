@@ -132,11 +132,12 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="4dp"
                     android:isIndicator="true"
-                    android:progressTint="#7fa87f"
                     android:rating="4"
                     android:stepSize="0.5"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+                <!--android:progressTint="@color/colorPri"-->
+
 
                 <TextView
                     android:id="@+id/titre"
@@ -149,7 +150,7 @@
                     android:text="TextView"
                     android:textAllCaps="false"
                     android:textAppearance="@android:style/TextAppearance.Material.Widget.Button.Borderless.Colored"
-                    android:textColor="#2c3e50"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -251,6 +252,7 @@
                     android:textColor="#2c3e50"
                     android:textSize="12sp"
                     android:textStyle="bold"
+                    android:layout_marginTop="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintHorizontal_bias="0.01"
                     app:layout_constraintLeft_toRightOf="@+id/surface"
@@ -270,6 +272,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linear00">
 
                 <TextView
+
                     android:id="@+id/hh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -279,11 +282,46 @@
                     android:text="Description :"
                     android:textAllCaps="false"
                     android:textAppearance="@android:style/TextAppearance.Material.Widget.Button.Borderless.Colored"
-                    android:textColor="#2c3e50"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="Owner :"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/detail_view_owner_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="owner ID"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.875"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/detail"
@@ -328,7 +366,7 @@
                     android:text="Visiting Hours :"
                     android:textAllCaps="false"
                     android:textAppearance="@android:style/TextAppearance.Material.Widget.Button.Borderless.Colored"
-                    android:textColor="#2c3e50"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"

@@ -175,6 +175,7 @@ public class HouseDetailActivity extends FragmentActivity
         TextView detail = (TextView) findViewById(R.id.detail);
         TextView horaires = (TextView) findViewById(R.id.horaires);
         TextView carre = (TextView)findViewById(R.id.carre);
+        TextView owner_id = findViewById(R.id.detail_view_owner_id);
 
         carre.setText(Html.fromHtml("m<sup>2</sup>"));
 
@@ -198,6 +199,7 @@ public class HouseDetailActivity extends FragmentActivity
         nb_chambres.setText(house.getRoomsHouse());
         surface.setText(house.getAreaHouse());
         detail.setText(house.getDescriptionHouse());
+        owner_id.setText(String.valueOf(house.getOwnerHouse()));
 
 //        String str = house.getJoursVisiteLogement().get(0).getJourDispo() + " : " + house.getJoursVisiteLogement().get(0).getHeureDebutDispo() + " - " + house.getJoursVisiteLogement().get(0).getHeureFinDispo();
 //        for (int i = 1; i < house.getJoursVisiteLogement().size(); i++) {
