@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "bcffc1215b45e591f0648287e109264f",
+    "identityHash": "c5c25d9a17fe5ef522b5a37319d36b12",
     "entities": [
       {
         "tableName": "word_table",
@@ -76,7 +76,7 @@
       },
       {
         "tableName": "house_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`house_id` INTEGER NOT NULL, `typeHouse` TEXT, `priceHouse` TEXT, `areaHouse` TEXT, `roomsHouse` TEXT, `locationHouse` TEXT, `descriptionHouse` TEXT, `availabilityHouse` TEXT, `imageHouse` TEXT, `user_Id` INTEGER NOT NULL, `ratingHouse` TEXT, `commentsHouse` INTEGER NOT NULL, PRIMARY KEY(`house_id`), FOREIGN KEY(`user_Id`) REFERENCES `user_table`(`user_id`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`house_id` INTEGER NOT NULL, `typeHouse` TEXT, `priceHouse` TEXT, `areaHouse` TEXT, `roomsHouse` TEXT, `locationHouse` TEXT, `descriptionHouse` TEXT, `availabilityHouse` TEXT, `imageHouse` TEXT, `user_Id` INTEGER NOT NULL, `ratingHouse` TEXT, `commentsHouse` INTEGER NOT NULL, `water` INTEGER NOT NULL, `electricity` INTEGER NOT NULL, `numberLivingRoom` INTEGER NOT NULL, `numberBath` INTEGER NOT NULL, `numberToilet` INTEGER NOT NULL, `numberBedrooms` INTEGER NOT NULL, `numberBalcony` INTEGER NOT NULL, `numberKitchen` INTEGER NOT NULL, `numberParkingGarage` INTEGER NOT NULL, `housePhoneContact` TEXT, `houseEmailContact` TEXT, `createdAt` TEXT, `viewingDays` TEXT, PRIMARY KEY(`house_id`), FOREIGN KEY(`user_Id`) REFERENCES `user_table`(`user_id`) ON UPDATE CASCADE ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -149,6 +149,84 @@
             "columnName": "commentsHouse",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "water",
+            "columnName": "water",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "electricity",
+            "columnName": "electricity",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numberLivingRoom",
+            "columnName": "numberLivingRoom",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numberBath",
+            "columnName": "numberBath",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numberToilet",
+            "columnName": "numberToilet",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numberBedrooms",
+            "columnName": "numberBedrooms",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numberBalcony",
+            "columnName": "numberBalcony",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numberKitchen",
+            "columnName": "numberKitchen",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "numberParkingGarage",
+            "columnName": "numberParkingGarage",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "housePhoneContact",
+            "columnName": "housePhoneContact",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "houseEmailContact",
+            "columnName": "houseEmailContact",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "createdAt",
+            "columnName": "createdAt",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "viewingDays",
+            "columnName": "viewingDays",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -175,7 +253,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"bcffc1215b45e591f0648287e109264f\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c5c25d9a17fe5ef522b5a37319d36b12\")"
     ]
   }
 }
