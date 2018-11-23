@@ -177,6 +177,16 @@ public class HouseDetailActivity extends FragmentActivity
         TextView carre = (TextView)findViewById(R.id.carre);
         TextView owner_id = findViewById(R.id.detail_view_owner_id);
 
+        TextView electricity = findViewById(R.id.textview_electricity);
+        TextView water = findViewById(R.id.textview_water);
+        TextView livingRoom = findViewById(R.id.textview_living_room);
+        TextView bathroom = findViewById(R.id.textview_bathroom);
+        TextView toilet = findViewById(R.id.textview_toilet);
+        TextView bedroom = findViewById(R.id.textview_bedroom);
+        TextView kitchen = findViewById(R.id.textview_kitchen);
+        TextView balcony = findViewById(R.id.textview_balcony);
+
+
         carre.setText(Html.fromHtml("m<sup>2</sup>"));
 
         ImageButton noter = (ImageButton) findViewById(R.id.note);
@@ -200,6 +210,24 @@ public class HouseDetailActivity extends FragmentActivity
         surface.setText(house.getAreaHouse());
         detail.setText(house.getDescriptionHouse());
         owner_id.setText(String.valueOf(house.getOwnerHouse()));
+
+        if(house.getElectricity() == 1) {
+            electricity.setText("Available");
+        }else{
+            electricity.setText("not available");
+        }
+
+        if(house.getWater()==1){
+            water.setText("Avaliable");
+        } else {
+            water.setText("Unavailable");
+        }
+        livingRoom.setText(String.valueOf(house.getNumberLivingRoom()));
+        bathroom.setText(String.valueOf(house.getNumberBath()));
+        toilet.setText(String.valueOf(house.getNumberToilet()));
+        bedroom.setText(String.valueOf(house.getNumberBedrooms()));
+        kitchen.setText(String.valueOf(house.getNumberKitchen()));
+        balcony.setText(String.valueOf(house.getNumberBalcony()));
 
 //        String str = house.getJoursVisiteLogement().get(0).getJourDispo() + " : " + house.getJoursVisiteLogement().get(0).getHeureDebutDispo() + " - " + house.getJoursVisiteLogement().get(0).getHeureFinDispo();
 //        for (int i = 1; i < house.getJoursVisiteLogement().size(); i++) {
@@ -257,7 +285,8 @@ public class HouseDetailActivity extends FragmentActivity
 
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
 //                callIntent.setData(Uri.parse("tel:"+ house.getOwnerHouse()));
-                callIntent.setData(Uri.parse("tel:"+"+254721542746"));
+//                callIntent.setData(Uri.parse("tel:"+"+254721542746"));
+                callIntent.setData(Uri.parse("tel:"+house.getHousePhoneContact()));
                 if (ActivityCompat.checkSelfPermission(HouseDetailActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     return;
                 }

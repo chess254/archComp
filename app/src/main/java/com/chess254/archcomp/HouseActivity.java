@@ -115,12 +115,12 @@ public class HouseActivity extends AppCompatActivity {
             int school = data.getExtras().getInt("school");
             int hospital = data.getExtras().getInt("hospital");
             int transportation = data.getExtras().getInt("transportation");
-            int livingRoom = data.getExtras().getInt("transportation");
-            int bath = data.getExtras().getInt("transportation");
-            int toilet = data.getExtras().getInt("transportation");
-            int bedroom = data.getExtras().getInt("transportation");
-            int kitchen = data.getExtras().getInt("transportation");
-            int balcony = data.getExtras().getInt("transportation");
+            int livingRoom = data.getIntExtra("living room", 0);
+            int bath = data.getExtras().getInt("bath");
+            int toilet = data.getExtras().getInt("toilet");
+            int bedroom = data.getExtras().getInt("bedroom");
+            int kitchen = data.getExtras().getInt("kitchen");
+            int balcony = data.getExtras().getInt("balcony");
 
 
 
