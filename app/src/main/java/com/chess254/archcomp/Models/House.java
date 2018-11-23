@@ -43,6 +43,20 @@ public class House implements Parcelable {
 
     private String ratingHouse;
     private int commentsHouse;
+    private int water;
+    private int electricity;
+    private int numberLivingRoom;
+    private int numberBath;
+    private int numberToilet;
+    private int numberBedrooms;
+    private int numberBalcony;
+    private int numberKitchen;
+    private int numberParkingGarage;
+    private String housePhoneContact;
+    private String houseEmailContact;
+    private String createdAt;
+    private String viewingDays;
+
 
     public House() {
     }
@@ -58,19 +72,46 @@ public class House implements Parcelable {
                  String imageHouse,
                  int ownerHouse,
                  String ratingHouse,
-                 int commentsHouse) {
-        this.id = id;
-        this.typeHouse = typeHouse;
-        this.priceHouse = priceHouse;
-        this.areaHouse = areaHouse;
-        this.roomsHouse = roomsHouse;
-        this.locationHouse = locationHouse;
-        this.descriptionHouse = descriptionHouse;
-        this.availabilityHouse = availabilityHouse;
-        this.imageHouse = imageHouse;
-        this.ownerHouse = ownerHouse;
-        this.ratingHouse = ratingHouse;
-        this.commentsHouse = commentsHouse;
+                 int commentsHouse,
+                int water,
+                 int electricity,
+                 int numberLivingRoom,
+                 int numberBath,
+                 int numberToilet,
+                 int numberBedrooms,
+                 int numberBalcony,
+                 int numberKitchen,
+                 int numberParkingGarage,
+                 String housePhoneContact,
+                 String houseEmailContact,
+                 String createdAt,
+                 String viewingDays) {
+
+                        this.id = id;
+                        this.typeHouse = typeHouse;
+                        this.priceHouse = priceHouse;
+                        this.areaHouse = areaHouse;
+                        this.roomsHouse = roomsHouse;
+                        this.locationHouse = locationHouse;
+                        this.descriptionHouse = descriptionHouse;
+                        this.availabilityHouse = availabilityHouse;
+                        this.imageHouse = imageHouse;
+                        this.ownerHouse = ownerHouse;
+                        this.ratingHouse = ratingHouse;
+                        this.commentsHouse = commentsHouse;
+                        this.water = water;
+                        this.electricity = electricity;
+                        this.numberLivingRoom = numberLivingRoom;
+                        this.numberBath = numberBath;
+                        this.numberToilet = numberToilet;
+                        this.numberBedrooms = numberBedrooms;
+                        this.numberBalcony = numberBalcony;
+                        this.numberKitchen = numberKitchen;
+                        this.numberParkingGarage = numberParkingGarage;
+                        this.housePhoneContact = housePhoneContact;
+                        this.houseEmailContact = houseEmailContact;
+                        this.createdAt = createdAt;
+                        this.viewingDays = viewingDays;
     }
 
     protected House(Parcel in) {
@@ -90,6 +131,20 @@ public class House implements Parcelable {
         ownerHouse = in.readInt();
         ratingHouse = in.readString();
         commentsHouse = in.readInt();
+
+        water = in.readInt();
+        electricity = in.readInt();
+        numberLivingRoom =in.readInt();
+        numberBath = in.readInt();
+        numberToilet = in.readInt();
+        numberBedrooms = in.readInt();
+        numberBalcony = in.readInt();
+        numberKitchen = in.readInt();
+        numberParkingGarage = in.readInt();
+        housePhoneContact = in.readString();
+        houseEmailContact = in.readString();
+        createdAt = in.readString();
+        viewingDays = in.readString();
     }
 
     public static final Creator<House> CREATOR = new Creator<House>() {
@@ -201,6 +256,110 @@ public class House implements Parcelable {
         this.commentsHouse = commentsHouse;
     }
 
+    public int getWater() {
+        return water;
+    }
+
+    public void setWater(int water) {
+        this.water = water;
+    }
+
+    public int getElectricity() {
+        return electricity;
+    }
+
+    public void setElectricity(int electricity) {
+        this.electricity = electricity;
+    }
+
+    public int getNumberLivingRoom() {
+        return numberLivingRoom;
+    }
+
+    public void setNumberLivingRoom(int numberLivingRoom) {
+        this.numberLivingRoom = numberLivingRoom;
+    }
+
+    public int getNumberBath() {
+        return numberBath;
+    }
+
+    public void setNumberBath(int numberBath) {
+        this.numberBath = numberBath;
+    }
+
+    public int getNumberToilet() {
+        return numberToilet;
+    }
+
+    public void setNumberToilet(int numberToilet) {
+        this.numberToilet = numberToilet;
+    }
+
+    public int getNumberBedrooms() {
+        return numberBedrooms;
+    }
+
+    public void setNumberBedrooms(int numberBedrooms) {
+        this.numberBedrooms = numberBedrooms;
+    }
+
+    public int getNumberBalcony() {
+        return numberBalcony;
+    }
+
+    public void setNumberBalcony(int numberBalcony) {
+        this.numberBalcony = numberBalcony;
+    }
+
+    public int getNumberKitchen() {
+        return numberKitchen;
+    }
+
+    public void setNumberKitchen(int numberKitchen) {
+        this.numberKitchen = numberKitchen;
+    }
+
+    public int getNumberParkingGarage() {
+        return numberParkingGarage;
+    }
+
+    public void setNumberParkingGarage(int numberParkingGarage) {
+        this.numberParkingGarage = numberParkingGarage;
+    }
+
+    public String getHousePhoneContact() {
+        return housePhoneContact;
+    }
+
+    public void setHousePhoneContact(String housePhoneContact) {
+        this.housePhoneContact = housePhoneContact;
+    }
+
+    public String getHouseEmailContact() {
+        return houseEmailContact;
+    }
+
+    public void setHouseEmailContact(String houseEmailContact) {
+        this.houseEmailContact = houseEmailContact;
+    }
+
+    public String getViewingDays() {
+        return viewingDays;
+    }
+
+    public void setViewingDays(String viewingDays) {
+        this.viewingDays = viewingDays;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -224,7 +383,19 @@ public class House implements Parcelable {
         dest.writeString(imageHouse);
         dest.writeInt(ownerHouse);
         dest.writeString(ratingHouse);
-        dest.writeInt(commentsHouse);
+        dest.writeInt(commentsHouse); dest.writeInt(water);
+        dest.writeInt(electricity);
+        dest.writeInt(numberLivingRoom);
+        dest.writeInt(numberBath);
+        dest.writeInt(numberToilet);
+        dest.writeInt(numberBedrooms);
+        dest.writeInt(numberBalcony );
+        dest.writeInt(numberKitchen);
+        dest.writeInt(numberParkingGarage);
+        dest.writeString(housePhoneContact);
+        dest.writeString(houseEmailContact);
+        dest.writeString(createdAt);
+        dest.writeString(viewingDays);
     }
 
 
