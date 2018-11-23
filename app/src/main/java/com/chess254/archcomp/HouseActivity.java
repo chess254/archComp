@@ -110,6 +110,18 @@ public class HouseActivity extends AppCompatActivity {
             String area = data.getExtras().getString("area");
             String price = data.getExtras().getString("price");
             String description = data.getExtras().getString("description");
+            int electricity = data.getExtras().getInt("electricity");
+            int water = data.getExtras().getInt("water");
+            int school = data.getExtras().getInt("school");
+            int hospital = data.getExtras().getInt("hospital");
+            int transportation = data.getExtras().getInt("transportation");
+            int livingRoom = data.getExtras().getInt("transportation");
+            int bath = data.getExtras().getInt("transportation");
+            int toilet = data.getExtras().getInt("transportation");
+            int bedroom = data.getExtras().getInt("transportation");
+            int kitchen = data.getExtras().getInt("transportation");
+            int balcony = data.getExtras().getInt("transportation");
+
 
 
 //              removed this to let empty constructor autogenerate primary key
@@ -125,6 +137,15 @@ public class HouseActivity extends AppCompatActivity {
             house.setAreaHouse(area);
             house.setPriceHouse(price);
             house.setDescriptionHouse(description);
+            house.setElectricity(electricity);
+            house.setWater(water);
+            house.setNumberLivingRoom(livingRoom);
+            house.setNumberBath(bath);
+            house.setNumberToilet(toilet);
+            house.setNumberBedrooms(bedroom);
+            house.setNumberKitchen(kitchen);
+            house.setNumberBalcony(balcony);
+
             mHouseViewModel.insert(house);
         } else {
             Toast.makeText(

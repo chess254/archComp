@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="8dp"
@@ -10,10 +11,20 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:elevation="20dp"
+            app:cardCornerRadius="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="10dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -138,58 +149,84 @@
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:elevation="20dp"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/facilities"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="Facilities"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/switchElectricity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Electricity" />
+
+                <Switch
+                    android:id="@+id/switchWater"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Water" />
+
+                <Switch
+                    android:id="@+id/switchSchool"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="School" />
+
+                <Switch
+                    android:id="@+id/switchHospital"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hospital" />
+
+                <Switch
+                    android:id="@+id/switchTransportation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Transportation" />
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:elevation="20dp"
+            app:cardCornerRadius="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/facilities"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="Facilities"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-
-            <Switch
-                android:id="@+id/Electricity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Electricity" />
-
-            <Switch
-                android:id="@+id/Water"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Water" />
-
-            <Switch
-                android:id="@+id/School"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="School" />
-
-            <Switch
-                android:id="@+id/Hospital"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Hospital" />
-
-            <Switch
-                android:id="@+id/Transportation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Transportation" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="10dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -216,6 +253,7 @@
                         android:textColor="#194922" />
 
                     <EditText
+                        android:id="@+id/edit_living_room"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -233,6 +271,7 @@
                         android:textColor="#194922" />
 
                     <EditText
+                        android:id="@+id/edit_bath"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -251,6 +290,7 @@
                         android:textColor="#194922" />
 
                     <EditText
+                        android:id="@+id/edit_toilet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -270,6 +310,7 @@
                         android:textColor="#194922" />
 
                     <EditText
+                        android:id="@+id/edit_bedroom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -288,6 +329,7 @@
                         android:textColor="#194922" />
 
                     <EditText
+                        android:id="@+id/edit_kitchen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -306,6 +348,7 @@
                         android:textColor="#194922" />
 
                     <EditText
+                        android:id="@+id/edit_balcony"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
@@ -320,10 +363,22 @@
 
         </LinearLayout>
 
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:elevation="20dp"
+            app:cardCornerRadius="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="10dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -395,11 +450,11 @@
                             android:layout_marginTop="@dimen/big_padding"
                             android:fontFamily="sans-serif-light"
                             android:hint="Email"
-                            android:textColorHint="#FF380427"
                             android:inputType="textCapWords"
                             android:padding="@dimen/small_padding"
                             android:text="lae2006a@gmail.com"
                             android:textColor="#380427"
+                            android:textColorHint="#FF380427"
                             android:textSize="18sp" />
                     </android.support.design.widget.TextInputLayout>
                 </TableRow>
@@ -410,6 +465,8 @@
 
         </LinearLayout>
 
+        </android.support.v7.widget.CardView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -419,10 +476,10 @@
                 android:id="@+id/button_preview_house"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="7dp"
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="15dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:background="#FF0D2912"
                 android:text="Preview"
@@ -432,10 +489,10 @@
                 android:id="@+id/button_save_house"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="7dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:background="#FF380427"
                 android:text="save"
