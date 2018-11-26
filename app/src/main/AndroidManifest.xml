@@ -5,6 +5,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,10 +20,9 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name=".ActivityLogin"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ActivityLogin"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -27,15 +31,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewUserActivity"></activity>
-        <activity android:name=".HouseByUser"></activity>
-        <activity android:name=".NewHouseActivity"></activity>
-
-        <activity android:name=".HouseDetailActivity"></activity>
+        <activity android:name=".NewUserActivity" />
+        <activity android:name=".HouseByUser" />
+        <activity android:name=".NewHouseActivity" />
+        <activity android:name=".HouseDetailActivity" />
         <activity
             android:name=".HouseActivity"
             android:label="Listings"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--
                 The API key for Google Maps-based APIs is defined as a string resource.
                 (See the file "res/values/google_maps_api.xml").
@@ -43,11 +46,14 @@
                 You need a different API key for each encryption key, including the release key that is used to
                 sign the APK for publishing.
                 You can define the keys for the debug and release targets in src/debug/ and src/release/.
-           -->
+        -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity
+            android:name=".ActivityRegister"
+            android:label="@string/title_activity_regidter"></activity>
     </application>
 
 </manifest>
