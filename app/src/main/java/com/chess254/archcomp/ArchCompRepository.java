@@ -113,7 +113,20 @@ public class ArchCompRepository extends LiveData<DataSnapshot> {
     }
 
     public void insertHouse(House house) {
-        new insertHouseAsyncTask(houseDao).execute(house);
+        //room
+        //new insertHouseAsyncTask(houseDao).execute(house);
+
+        //firebase
+        mAuth = FirebaseAuth.getInstance();
+
+        DatabaseReference houseRef = firebaseDb.getReference("House");
+        DatabaseReference newHouseRef = houseRef.push();
+
+        house.setId(newHouseRef.getKey());
+
+        house.setTypeHouse(house.getTypeHouse());
+        house.setAreaHouse("");
+        houseRef.child( newHouseRef.getKey() ).setValue(house);
     }
 
     //Asynctasks
