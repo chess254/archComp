@@ -17,7 +17,7 @@ public class HouseByUserViewModel extends AndroidViewModel {
 
     private ArchCompRepository mRepository;
 
-    private int mUser_id;
+    private String mUser_id;
 
     //a private LiveData member variable to cache the list of houses.
     private LiveData<List<House>> houseByUserId;
@@ -29,7 +29,7 @@ public class HouseByUserViewModel extends AndroidViewModel {
 
     }
 
-    LiveData<List<House>> getHouseByUserId(int user_id){
+    LiveData<List<House>> getHouseByUserId(String user_id){
         mUser_id = user_id;
 //        return mRepository.getHouseByUserID(mUser_id);
         houseByUserId = mRepository.getHouseByUserID(mUser_id);

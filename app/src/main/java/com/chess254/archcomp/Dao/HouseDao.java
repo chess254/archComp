@@ -28,7 +28,7 @@ public interface HouseDao {
 //    LiveData<House> findById(String user_id);
 
     @Query("SELECT * FROM house_table WHERE user_Id=:user_id")
-    LiveData<List<House>> houseByUserId(int user_id);
+    LiveData<List<House>> houseByUserId(String user_id);
 //    List<House> findHouseCreatedById(int user_id);
 
 

@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
 //            email = getIntent().getStringExtra("email");
 
 
-            User user = new User( 1,name, email, phone, address, image );
+            User user = new User( "Chess",name, email, phone, address, image );
             mUserViewModel.insert(user);
         } else {
             Toast.makeText(

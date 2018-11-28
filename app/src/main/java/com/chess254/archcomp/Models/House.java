@@ -3,7 +3,6 @@ package com.chess254.archcomp.Models;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -27,7 +26,7 @@ public class House implements Parcelable {
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "house_id")
-    private Integer id;
+    private String id;
 
     private String typeHouse;
     private String priceHouse;
@@ -39,7 +38,7 @@ public class House implements Parcelable {
     private String imageHouse;
 
     @ColumnInfo(name = "user_Id")
-    private int ownerHouse;
+    private String ownerHouse;
 
     private String ratingHouse;
     private int commentsHouse;
@@ -61,7 +60,7 @@ public class House implements Parcelable {
     public House() {
     }
 
-    public House(@NonNull Integer id,
+    public House(@NonNull String id,
                  String typeHouse,
                  String priceHouse,
                  String areaHouse,
@@ -70,7 +69,7 @@ public class House implements Parcelable {
                  String descriptionHouse,
                  String availabilityHouse,
                  String imageHouse,
-                 int ownerHouse,
+                 String ownerHouse,
                  String ratingHouse,
                  int commentsHouse,
                 int water,
@@ -118,7 +117,7 @@ public class House implements Parcelable {
         if (in.readByte() == 0) {
             id = null;
         } else {
-            id = in.readInt();
+            id = in.readString();
         }
         typeHouse = in.readString();
         priceHouse = in.readString();
@@ -128,7 +127,7 @@ public class House implements Parcelable {
         descriptionHouse = in.readString();
         availabilityHouse = in.readString();
         imageHouse = in.readString();
-        ownerHouse = in.readInt();
+        ownerHouse = in.readString();
         ratingHouse = in.readString();
         commentsHouse = in.readInt();
 
@@ -160,11 +159,11 @@ public class House implements Parcelable {
     };
 
     @NonNull
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(@NonNull Integer id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 
@@ -232,11 +231,11 @@ public class House implements Parcelable {
         this.imageHouse = imageHouse;
     }
 
-    public int getOwnerHouse() {
+    public String getOwnerHouse() {
         return ownerHouse;
     }
 
-    public void setOwnerHouse(int ownerHouse) {
+    public void setOwnerHouse(String ownerHouse) {
         this.ownerHouse = ownerHouse;
     }
 
@@ -371,7 +370,7 @@ public class House implements Parcelable {
             dest.writeByte((byte) 0);
         } else {
             dest.writeByte((byte) 1);
-            dest.writeInt(id);
+            dest.writeString(id);
         }
         dest.writeString(typeHouse);
         dest.writeString(priceHouse);
@@ -381,7 +380,7 @@ public class House implements Parcelable {
         dest.writeString(descriptionHouse);
         dest.writeString(availabilityHouse);
         dest.writeString(imageHouse);
-        dest.writeInt(ownerHouse);
+        dest.writeString(ownerHouse);
         dest.writeString(ratingHouse);
         dest.writeInt(commentsHouse); dest.writeInt(water);
         dest.writeInt(electricity);

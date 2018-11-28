@@ -28,6 +28,6 @@ public interface UserDao {
     LiveData<List<House>> houseByUserId(int user_id);
 
     @Query("SELECT * FROM user_table WHERE user_id = :user_id")
-    LiveData<User> getUserById(int user_id);
+    LiveData<User> getUserById(String user_id);
 
 }

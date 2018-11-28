@@ -30,7 +30,7 @@ public class UserViewModel extends AndroidViewModel {
 
     //a private LiveData member variable to cache the list of words.
     private LiveData<List<User>> mAllUsers;
-    private int mUser_id;
+    private String mUser_id;
     private LiveData<User> mUserById;
 
     //a constructor that gets a reference to the repository and gets the list of words from the repository.

@@ -38,7 +38,7 @@ public class ArchCompRepository extends LiveData<DataSnapshot> {
 //    private LiveData<House> getHouse;
 //    private LiveData<List<House>> allHousesByUser;
     private LiveData<List<House>> houseByUserId;
-    private int mUser_id;
+    private String mUser_id;
     //test
 
     FirebaseAuth mAuth;
@@ -75,12 +75,12 @@ public class ArchCompRepository extends LiveData<DataSnapshot> {
     }
 
 
-     LiveData<List<House>> getHouseByUserID(int user_id){
+     LiveData<List<House>> getHouseByUserID(String user_id){
 //        mUser_id = user_id;
         return houseDao.houseByUserId(user_id);
     }
 
-    LiveData<User>  getUserById(int user_id){
+    LiveData<User>  getUserById(String user_id){
          return userDao.getUserById(user_id);
     }
 

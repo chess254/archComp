@@ -44,7 +44,7 @@ public class HouseDetailViewModel extends AndroidViewModel {
 
     LiveData<User> userById;
 
-    LiveData<User> getUserById(int user_id){
+    LiveData<User> getUserById(String user_id){
 //        mUser_Id = user_id;
 //        return mRepository.getHouseByUserID(mUser_id);
         userById = mRepository.getUserById(user_id);

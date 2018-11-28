@@ -43,7 +43,7 @@ public class HouseViewModel extends AndroidViewModel {
         return mAllHouses;
     }
 
-    LiveData<List<House>> getHouseByUserId(int user_id){
+    LiveData<List<House>> getHouseByUserId(String user_id){
         return mRepository.getHouseByUserID(user_id);
 
     }

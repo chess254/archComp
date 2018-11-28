@@ -133,7 +133,7 @@ public class HouseActivity extends AppCompatActivity {
             house.setTypeHouse(type);
             house.setLocationHouse(location);
             house.setRoomsHouse(rooms);
-            house.setOwnerHouse(1);// todo: hardcoded foreign user id it this , check out how to correct asap to get the relations working
+            house.setOwnerHouse("Chess");// todo: hardcoded foreign user id it this , check out how to correct asap to get the relations working
             house.setAreaHouse(area);
             house.setPriceHouse(price);
             house.setDescriptionHouse(description);
