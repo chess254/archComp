@@ -1,5 +1,6 @@
 package com.chess254.archcomp;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.chess254.archcomp.Models.User;
+import com.google.firebase.database.DataSnapshot;
 
 import java.util.List;
 
@@ -74,7 +76,11 @@ public class MainActivity extends AppCompatActivity {
         //The onChanged() method fires when the observed data changes and the activity is in the foreground.
 
 //
+
+
         mUserViewModel.getAllUsers().observe(this, new Observer<List<User>>() {
+
+
             @Override
             public void onChanged(@Nullable final List<User> users) {
                 // Update the cached copy of the words in the adapter.
@@ -82,30 +88,42 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //didnt work, firebase
+//        LiveData<User> userLiveData = mUserViewModel.getUsersLiveData();
+//        Observer observer = new Observer() {
+//            @Override
+//            public void onChanged(@Nullable User user) {
+//                if (user != null) {
+//                    adapter.setUsers(user);
+//                }
+//            }
+//
+//
+//        };
+//        userLiveData.observe(this, observer);
 
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, NewUserActivity.class);
+                startActivityForResult(intent, NEW_USER_ACTIVITY_REQUEST_CODE);
+            }
+        });
 
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
 //
-//                Intent intent = new Intent(MainActivity.this, NewUserActivity.class);
-//                startActivityForResult(intent, NEW_USER_ACTIVITY_REQUEST_CODE);
+//
+//                Intent intent = new Intent(MainActivity.this, HouseByUser.class);
+////                startActivityForResult(intent, NEW_USER_ACTIVITY_REQUEST_CODE);
+//                startActivity(intent);
 //            }
 //        });
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-
-                Intent intent = new Intent(MainActivity.this, HouseByUser.class);
-//                startActivityForResult(intent, NEW_USER_ACTIVITY_REQUEST_CODE);
-                startActivity(intent);
-            }
-        });
 
         FloatingActionButton houseButton = findViewById(R.id.button_houses);
         houseButton.setOnClickListener(new View.OnClickListener() {

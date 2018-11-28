@@ -28,6 +28,9 @@ public class User {
 //        private ArrayList<Appointment> appointments; //appointment
 
 
+    public User() {
+    }
+
     public User(@NonNull Integer id,
                 String userName,
                 String userPhone,

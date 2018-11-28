@@ -27,4 +27,7 @@ public interface UserDao {
     @Query ("SELECT * FROM house_table WHERE user_id = :user_id")
     LiveData<List<House>> houseByUserId(int user_id);
 
+    @Query("SELECT * FROM user_table WHERE user_id = :user_id")
+    LiveData<User> getUserById(int user_id);
+
 }

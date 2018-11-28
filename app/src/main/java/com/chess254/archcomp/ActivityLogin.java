@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chess254.archcomp.Models.House;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -46,15 +47,9 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
     EditText mEmail;
     EditText mPassword;
 
-    //create dialog
     AlertDialog waiting_dialog;
 
     TextView optionRegister;
-
-    //firebase auth
-
-
-
 
 
     @Override
