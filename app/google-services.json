@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "443480539289",
+    "firebase_url": "https://kodesha-8ad75.firebaseio.com",
+    "project_id": "kodesha-8ad75",
+    "storage_bucket": "kodesha-8ad75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443480539289:android:4eeedcf3d069bb38",
+        "android_client_info": {
+          "package_name": "com.chess254.archcomp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "443480539289-gfoj9otsmt6oo5q3klunh5n9ndif78a7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chess254.archcomp",
+            "certificate_hash": "1d6998163bf98cbb31b304ee75b18dcf3563bd43"
+          }
+        },
+        {
+          "client_id": "443480539289-7qeolgupekmerj3iefaq8dpt48urne0j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chess254.archcomp",
+            "certificate_hash": "81970a97094e31f37c5e9c7e807dbb849d9c93ef"
+          }
+        },
+        {
+          "client_id": "443480539289-isan3fvvts9f3mi6t761ql04gb81g89c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk5Ws0EA8-ubpYEnK2JhnLgCvZaZFh6F0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "443480539289-isan3fvvts9f3mi6t761ql04gb81g89c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
