@@ -38,7 +38,7 @@ public class HouseByUser extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                houseByUserViewModel.getHouseByUserId(2)
+                houseByUserViewModel.getHouseByUserId("Chess")
                         .observe(HouseByUser.this,
                                 new Observer<List<House>>() {
                                     @Override

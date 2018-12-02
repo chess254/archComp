@@ -2,20 +2,31 @@ package com.chess254.archcomp;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.chess254.archcomp.Dao.HouseDao;
 import com.chess254.archcomp.Dao.UserDao;
 import com.chess254.archcomp.Models.House;
 import com.chess254.archcomp.Models.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by chess on 10/23/2018.
  */
 
-public class ArchCompRepository {
+public class ArchCompRepository extends LiveData<DataSnapshot> {
 
     private WordDao wordDao;
     private UserDao userDao;
@@ -23,10 +34,16 @@ public class ArchCompRepository {
     private LiveData<List<User>> allUsers;
     private LiveData<List<Word>> allWords;
     private LiveData<List<House>> allHouses;
+    private LiveData<User> userById;
 //    private LiveData<House> getHouse;
 //    private LiveData<List<House>> allHousesByUser;
     private LiveData<List<House>> houseByUserId;
-    private int mUser_id;
+    private String mUser_id;
+    //test
+
+    FirebaseAuth mAuth;
+    FirebaseDatabase firebaseDb = FirebaseDatabase.getInstance();
+
 
 //    private int id;
 
@@ -40,11 +57,7 @@ public class ArchCompRepository {
         allUsers = userDao.getAllUsers();
         allHouses = houseDao.getAllHouses();
         houseByUserId = getHouseByUserID(mUser_id);
-
-
-
-//        getHouse = houseDao.findById("id");
-
+        userById = getUserById( mUser_id);
     }
 
     LiveData<List<Word>> getAllWords() {
@@ -52,24 +65,23 @@ public class ArchCompRepository {
     }
 
     LiveData<List<User>> getAllUsers() {
+        //return users from room db
         return allUsers;
     }
 
     LiveData<List<House>> getAllHouses() {
+
         return allHouses;
     }
 
-//    LiveData<House> getHouse(){
-//        return getHouse;
-//    }
-//    LiveData<List<House>> findHouseCreatedById(int user_id){
-//        return houseDao.findHouseCreatedById(user_id);
-//       }
-//    List<House> findHouseCreatedBy(int id){ return allHousesByUser;}
 
-     LiveData<List<House>> getHouseByUserID(int user_id){
+     LiveData<List<House>> getHouseByUserID(String user_id){
 //        mUser_id = user_id;
         return houseDao.houseByUserId(user_id);
+    }
+
+    LiveData<User>  getUserById(String user_id){
+         return userDao.getUserById(user_id);
     }
 
 
@@ -83,12 +95,38 @@ public class ArchCompRepository {
     }
 
     public void insertUser(User user) {
-        new insertUserAsyncTask(userDao).execute(user);
+
+         //insert user to room db
+        //new insertUserAsyncTask(userDao).execute(user);
+
+        //insert user to firebase db
+        mAuth = FirebaseAuth.getInstance();
+        String Uid = mAuth.getCurrentUser().getUid();
+        DatabaseReference userReference = firebaseDb.getReference("User");
+        userReference.child(Uid).child("name").setValue(user.getUserName());
+        userReference.child(Uid).child("email").setValue(user.getUserEmail());
+        userReference.child(Uid).child("phone").setValue(user.getUserPhone());
+        userReference.child(Uid).child("location").setValue(user.getUserAddress());
+        userReference.child(Uid).child("imageUrl").setValue(user.getUserImage());
+
 
     }
 
     public void insertHouse(House house) {
-        new insertHouseAsyncTask(houseDao).execute(house);
+        //room
+        //new insertHouseAsyncTask(houseDao).execute(house);
+
+        //firebase
+        mAuth = FirebaseAuth.getInstance();
+
+        DatabaseReference houseRef = firebaseDb.getReference("House");
+        DatabaseReference newHouseRef = houseRef.push();
+
+        house.setId(newHouseRef.getKey());
+
+        house.setTypeHouse(house.getTypeHouse());
+        house.setAreaHouse("");
+        houseRef.child( newHouseRef.getKey() ).setValue(house);
     }
 
     //Asynctasks

@@ -2,11 +2,15 @@ package com.chess254.archcomp;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +31,7 @@ import android.widget.ViewSwitcher;
 import com.chess254.archcomp.Models.House;
 //import com.example.yougourta.projmob.Classes.Logement;
 //import com.example.yougourta.projmob.R;
+import com.chess254.archcomp.Models.User;
 import com.github.jjobes.slidedatetimepicker.SlideDateTimeListener;
 import com.github.jjobes.slidedatetimepicker.SlideDateTimePicker;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -39,6 +44,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class HouseDetailActivity extends FragmentActivity
 //        implements OnMapReadyCallback
@@ -175,7 +181,7 @@ public class HouseDetailActivity extends FragmentActivity
         TextView detail = (TextView) findViewById(R.id.detail);
         TextView horaires = (TextView) findViewById(R.id.horaires);
         TextView carre = (TextView)findViewById(R.id.carre);
-        TextView owner_id = findViewById(R.id.detail_view_owner_id);
+        final TextView owner_id = findViewById(R.id.detail_view_owner_id);
 
         TextView electricity = findViewById(R.id.textview_electricity);
         TextView water = findViewById(R.id.textview_water);
@@ -209,7 +215,22 @@ public class HouseDetailActivity extends FragmentActivity
         nb_chambres.setText(house.getRoomsHouse());
         surface.setText(house.getAreaHouse());
         detail.setText(house.getDescriptionHouse());
-        owner_id.setText(String.valueOf(house.getOwnerHouse()));
+//        owner_id.setText(String.valueOf(house.getOwnerHouse()));
+
+
+        HouseDetailViewModel houseDetailViewModel = ViewModelProviders.of(this).get(HouseDetailViewModel.class);
+        houseDetailViewModel.getUserById( house.getOwnerHouse() ).observe(HouseDetailActivity.this,
+                new Observer<User>() {
+                    @Override
+                    public void onChanged(@Nullable User user) {
+                        if(user!=null)
+                        owner_id.setText(user.getUserName());
+                    }
+                });
+
+//        owner_id.setText(String.valueOf(userName));
+
+
 
         if(house.getElectricity() == 1) {
             electricity.setText("Available");

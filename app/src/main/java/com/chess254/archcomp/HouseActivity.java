@@ -15,8 +15,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.chess254.archcomp.Models.House;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
+import java.nio.charset.Charset;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by chess on 10/24/2018.
@@ -39,6 +43,9 @@ public class HouseActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar_house);
         setSupportActionBar(toolbar);
+
+        FirebaseAuth firebaseAuth;
+        FirebaseUser firebaseUser;
 
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new RecyclerTouchListener.ClickListener() {
@@ -129,11 +136,21 @@ public class HouseActivity extends AppCompatActivity {
 //                    "available", "image", 1, "5", 5  );
 
 
+            //generate random string for house id, temporary soln
+            byte[] array = new byte[7]; // length is bounded by 7
+            new Random().nextBytes(array);
+            String randomHouseIdTest = new String(array, Charset.forName("UTF-8"));
+
             House house = new House();
+            house.setId(randomHouseIdTest);
             house.setTypeHouse(type);
             house.setLocationHouse(location);
             house.setRoomsHouse(rooms);
-            house.setOwnerHouse(1);// todo: hardcoded foreign user id it this , check out how to correct asap to get the relations working
+            //house.setOwnerHouse("Chess");// todo: hardcoded foreign user id it this , check out how to correct asap to get the relations working
+
+            //try to use firebase to get logged in user and assign id to newly created house
+            house.setOwnerHouse(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
             house.setAreaHouse(area);
             house.setPriceHouse(price);
             house.setDescriptionHouse(description);

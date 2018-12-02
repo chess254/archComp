@@ -6,8 +6,12 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chess254.archcomp.Models.House;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -15,11 +19,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import android.app.AlertDialog;
 
@@ -33,12 +40,16 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
 
     public static  final int PERMISSION_SIGN_IN = 6329; //any integer value
     GoogleApiClient mGoogleApiClient;
-    SignInButton signInButton;
+    SignInButton googleSignInButton;
+    Button loginWithEmailAndPassword;
     FirebaseAuth firebaseAuth;
 
-    //create dialog
+    EditText mEmail;
+    EditText mPassword;
+
     AlertDialog waiting_dialog;
 
+    TextView optionRegister;
 
 
     @Override
@@ -50,11 +61,22 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        signInButton = findViewById(R.id.google_sign_in);waiting_dialog = new SpotsDialog.Builder().setContext(this)
+        loginWithEmailAndPassword = findViewById(R.id.btn_login_with_email_and_password);
+        loginWithEmailAndPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                waiting_dialog.show();
+                loginWithEmailAndPassword();
+            }
+        });
+
+        googleSignInButton = findViewById(R.id.google_sign_in);
+        waiting_dialog = new SpotsDialog.Builder().setContext(this)
                 .setMessage("Processing...")
                 .setCancelable(false)
                 .build();
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        googleSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 waiting_dialog.show();
@@ -62,6 +84,62 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
                 signIn();
             }
         });
+
+        optionRegister = findViewById(R.id.register);
+
+        optionRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityLogin.this, ActivityRegister.class);
+                startActivity(intent);
+            }
+        });
+
+
+    }
+
+    private void loginWithEmailAndPassword() {
+        mEmail = findViewById(R.id.input_email);
+        mPassword = findViewById(R.id.input_password);
+        String email = mEmail.getText().toString();
+        String password = mPassword.getText().toString();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(ActivityLogin.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("KODESHA :", "signInWithEmail:success");
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                            Intent intent = new Intent(ActivityLogin.this, HouseActivity.class);
+                            intent.putExtra("email", user.getEmail());
+                            waiting_dialog.dismiss();
+                            startActivity(intent);
+                            finish();
+
+                        } else {
+
+                            waiting_dialog.dismiss();
+                            Log.w("KODESHA :", "signInWithEmail:failure", task.getException());
+                            Toast.makeText(ActivityLogin.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //firebaseauth check if user is signed in and update ui
+
+        FirebaseUser currentuser = firebaseAuth.getCurrentUser();
 
 
     }
@@ -93,6 +171,8 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
                 AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
                 firebaseAuthWithGoogle(credential);
 
+
+
             } else {
 
                 waiting_dialog.dismiss();
@@ -103,6 +183,8 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
             }
         }
     }
+
+
 
     private void firebaseAuthWithGoogle(AuthCredential credential) {
         firebaseAuth.signInWithCredential(credential)
@@ -143,4 +225,6 @@ public class ActivityLogin extends AppCompatActivity implements GoogleApiClient.
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Toast.makeText(this, ""+connectionResult.getErrorMessage(), Toast.LENGTH_SHORT).show();
     }
+
+
 }

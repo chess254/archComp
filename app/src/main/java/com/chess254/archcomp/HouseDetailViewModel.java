@@ -6,6 +6,7 @@ import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
 import com.chess254.archcomp.Models.House;
+import com.chess254.archcomp.Models.User;
 
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class HouseDetailViewModel extends AndroidViewModel {
 
     //a private member variable to hold a reference to the repository.
     private ArchCompRepository mRepository;
+
+    private int mUser_Id;
 
     //a private LiveData member variable to cache the list of houses.
     private LiveData<House> mHouse;
@@ -37,5 +40,15 @@ public class HouseDetailViewModel extends AndroidViewModel {
     // implementation of insert() is completely hidden from the UI.
     public void insert(House house){
         mRepository.insertHouse(house);
+    }
+
+    LiveData<User> userById;
+
+    LiveData<User> getUserById(String user_id){
+//        mUser_Id = user_id;
+//        return mRepository.getHouseByUserID(mUser_id);
+        userById = mRepository.getUserById(user_id);
+        return userById;
+
     }
 }
